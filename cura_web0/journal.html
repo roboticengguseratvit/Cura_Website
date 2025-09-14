@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Journal — Cura</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="site-header">
+<div class="container header-inner">
+<a class="brand" href="index.html">Cura</a>
+<nav class="nav">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="features.html">Features</a>
+<a href="chat.html">Chat</a>
+<a href="journal.html">Journal</a>
+<a href="contact.html">Contact</a>
+</nav>
+<button class="menu-toggle" aria-label="Toggle menu">☰</button>
+</div>
+</header>
+
+
+<main class="container">
+<h1>Journal</h1>
+<form id="journalForm" class="journal-form">
+<label for="entry">Today's reflection</label>
+<textarea id="entry" rows="6" placeholder="How are you feeling today?" required></textarea>
+<div class="row">
+<label for="mood">Mood</label>
+<select id="mood">
+<option>Neutral</option>
+<option>Happy</option>
+<option>Sad</option>
+<option>Anxious</option>
+<option>Fatigued</option>
+</select>
+</div>
+<button type="submit" class="btn">Save Entry</button>
+</form>
+
+
+<section class="entries" id="entries">
+<h2>Saved Entries</h2>
+<div id="entryList"></div>
+</section>
+</main>
+
+
+<footer class="site-footer">
+<div class="container">
+<p>© 2025 Cura. All rights reserved.</p>
+</div>
+</footer>
+
+
+<script src="js/journal.js"></script>
+</body>
+</html>

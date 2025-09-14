@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chat — Cura</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="site-header">
+<div class="container header-inner">
+<a class="brand" href="index.html">Cura</a>
+<nav class="nav">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="features.html">Features</a>
+<a href="chat.html">Chat</a>
+<a href="journal.html">Journal</a>
+<a href="contact.html">Contact</a>
+</nav>
+<button class="menu-toggle" aria-label="Toggle menu">☰</button>
+</div>
+</header>
+
+<main class="container chat-page">
+<h1>Chat with Cura</h1>
+
+<!-- Only the external embed remains -->
+<div style="width:100%;max-width:700px;margin:auto;margin-top:24px;">
+  <iframe
+    src="https://www.jotform.com/agent/01994262cb657db69ee1bb9ad19de45d0473"
+    width="100%"
+    height="600"
+    style="border:none;border-radius:12px;overflow:hidden;"
+    allow="clipboard-write">
+  </iframe>
+</div>
+
+<p class="muted">Note: This is a prototype connection to an external chat. Responses may vary.</p>
+</main>
+
+<footer class="site-footer">
+<div class="container">
+<p>© 2025 Cura. All rights reserved.</p>
+</div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', ()=>{
+    document.querySelector('.menu-toggle')
+      .addEventListener('click', ()=> document.querySelector('.nav').classList.toggle('open'));
+  });
+</script>
+</body>
+</html>
