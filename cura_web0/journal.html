@@ -5,6 +5,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Journal — Cura</title>
 <link rel="stylesheet" href="css/styles.css">
+<style>
+  .journal-layout {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+  }
+  .entries-panel {
+    flex: 0 0 320px;
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 18px;
+    min-height: 500px;
+    box-shadow: 0 6px 18px rgba(16,24,40,0.04);
+  }
+  .entries-panel h2 {
+    color: #c06; /* pinkish for #Saved Entries */
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+  .entry {
+    background: #f7fbfb;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    padding: 10px;
+    border: 1px solid #eee;
+  }
+  .journal-main {
+    flex: 1;
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: 0 6px 18px rgba(16,24,40,0.04);
+  }
+  .slider-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.98rem;
+    margin-bottom: 2px;
+  }
+  .mood-slider, .rating-slider {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+</style>
 </head>
 <body>
 <header class="site-header">
@@ -22,32 +66,53 @@
 </div>
 </header>
 
-
 <main class="container">
 <h1>Journal</h1>
-<form id="journalForm" class="journal-form">
-<label for="entry">Today's reflection</label>
-<textarea id="entry" rows="6" placeholder="How are you feeling today?" required></textarea>
-<div class="row">
-<label for="mood">Mood</label>
-<select id="mood">
-<option>Neutral</option>
-<option>Happy</option>
-<option>Sad</option>
-<option>Anxious</option>
-<option>Fatigued</option>
-</select>
+<div class="journal-layout">
+  <!-- Left panel: Saved Entries -->
+  <aside class="entries-panel">
+    <h2>#Saved Entries</h2>
+    <div id="entryList"></div>
+  </aside>
+
+  <!-- Right panel: Moodometer + Journal Form -->
+  <section class="journal-main">
+    <form id="journalForm" class="journal-form">
+      <div>
+        <strong>Moodometer</strong>
+      </div>
+      <div class="slider-label">
+        <span>Depressed</span>
+        <span>Sad</span>
+        <span>Neutral</span>
+        <span>Happy</span>
+        <span>Excited</span>
+      </div>
+      <input type="range" id="moodometer" class="mood-slider" min="0" max="4" value="2" step="1">
+      <div style="margin-bottom:10px;">
+        <label for="rating"><strong>Rate your day!</strong></label>
+        <input type="range" id="rating" class="rating-slider" min="0" max="10" value="5" step="1">
+        <div class="slider-label">
+          <span>0</span>
+          <span>1</span>
+          <span>2</span>
+          <span>3</span>
+          <span>4</span>
+          <span>5</span>
+          <span>6</span>
+          <span>7</span>
+          <span>8</span>
+          <span>9</span>
+          <span>10</span>
+        </div>
+      </div>
+      <label for="entry"><strong>Journal</strong></label>
+      <textarea id="entry" rows="6" placeholder="Type here..." required></textarea>
+      <button type="submit" class="btn" style="margin-top:12px;">Save Entry</button>
+    </form>
+  </section>
 </div>
-<button type="submit" class="btn">Save Entry</button>
-</form>
-
-
-<section class="entries" id="entries">
-<h2>Saved Entries</h2>
-<div id="entryList"></div>
-</section>
 </main>
-
 
 <footer class="site-footer">
 <div class="container">
@@ -55,7 +120,12 @@
 </div>
 </footer>
 
-
 <script src="js/journal.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', ()=>{
+    document.querySelector('.menu-toggle')
+      .addEventListener('click', ()=> document.querySelector('.nav').classList.toggle('open'));
+  });
+</script>
 </body>
 </html>

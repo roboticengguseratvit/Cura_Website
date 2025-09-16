@@ -1,6 +1,8 @@
 const form = document.getElementById('journalForm');
 const entryList = document.getElementById('entryList');
 
+const moodLabels = ['Depressed', 'Sad', 'Neutral', 'Happy', 'Excited'];
+
 function loadEntries() {
   const raw = localStorage.getItem('cura_journal');
   return raw ? JSON.parse(raw) : [];
@@ -21,29 +23,52 @@ function render() {
     const div = document.createElement('div');
     div.className = 'entry';
     div.innerHTML = `
-      <div class="muted">${new Date(e.date).toLocaleString()}</div>
-      <p>${escapeHtml(e.text)}</p>
-      <div class="muted">Mood: ${escapeHtml(e.mood)}</div>
+      <div style="font-size:0.98rem;color:#333;">
+        <strong>${formatDateTime(e.date)}</strong>
+      </div>
+      <div style="margin-bottom:4px;">
+        <span style="color:#7fb3c8;"><strong>Mood:</strong> ${moodLabels[e.mood]}</span>
+        <span style="margin-left:12px;color:#c06;"><strong>Day Rating:</strong> ${e.rating}/10</span>
+      </div>
+      <div>${escapeHtml(e.text)}</div>
     `;
     entryList.appendChild(div);
   });
 }
 
 function escapeHtml(s) {
-  return s.replaceAll('&', '&amp;')
-          .replaceAll('<', '&lt;')
-          .replaceAll('>', '&gt;');
+  return s.replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;');
+}
+
+function formatDateTime(dateStr) {
+  const d = new Date(dateStr);
+  // Format: DD Month YYYY, HH:mm
+  const options = { day: '2-digit', month: 'long', year: 'numeric' };
+  const date = d.toLocaleDateString(undefined, options);
+  const time = d.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
+  return `${date} ${time}`;
 }
 
 form.addEventListener('submit', (ev) => {
   ev.preventDefault();
   const text = document.getElementById('entry').value.trim();
-  const mood = document.getElementById('mood').value;
+  const mood = parseInt(document.getElementById('moodometer').value, 10);
+  const rating = document.getElementById('rating') ? parseInt(document.getElementById('rating').value, 10) : 5;
   if (!text) return;
   const list = loadEntries();
-  list.push({ text, mood, date: new Date().toISOString() });
+  list.push({
+    text,
+    mood,
+    rating,
+    date: new Date().toISOString()
+  });
   saveEntries(list);
   form.reset();
+  // Reset sliders to default values
+  document.getElementById('moodometer').value = 2;
+  if (document.getElementById('rating')) document.getElementById('rating').value = 5;
   render();
 });
 
