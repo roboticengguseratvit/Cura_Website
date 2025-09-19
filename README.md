@@ -1,33 +1,24 @@
-# Cura – Emotional Companion Platform
+# Cura – Emotional Companion for Patients
 
-Cura is a **modern, responsive emotional companion website** designed to support chronically ill patients emotionally and mentally.  
-It provides a safe space for users to **track their moods, write daily reflections, and chat with an AI companion**.
-
-🌐 **Live Demo:**  
-[Cura – Live Website](https://68c9a61d69aa8b165ecdec6b--cura-demo-v1.netlify.app/)
-
----
+Cura is a web platform designed to support chronically ill patients by giving them a space to reflect, track emotions, and feel heard.
 
 ## Features
+- Chat Interface – Prototype chatbot for emotional check-ins  
+- Journal Page – Moodometer, rating, and journal entries  
+- Wellness Tracking – Saves your entries locally with date & time  
+- Simple UI – Clean, responsive, and calming design  
 
-- **Home Page** – Welcoming message and navigation  
-- **About Page** – Mission and goals of Cura  
-- **Features Page** – Highlights emotional support, wellness tracking, and accessibility  
-- **Chat Page** – Prototype chat interface (can embed AI/Gradio chatbot)  
-- **Journal Page** –  
-  - Moodometer slider with color feedback  
-  - Day rating slider (0–10)  
-  - Journal input field  
-  - Local storage support for saving entries  
-  - Click-to-edit and delete options  
-- **Contact Page** – Simple contact form  
-- **Responsive Design** – Works on desktop, tablet, and mobile
-
----
+## Live Demo
+Check out the live version of Cura here:  
+[Cura Demo Website](https://68c9a61d69aa8b165ecdec6b--cura-demo-v1.netlify.app/)
 
 ## Tech Stack
+- HTML, CSS, JavaScript for frontend  
+- LocalStorage for journal data persistence  
+- Netlify for hosting  
 
-- **HTML5** – Semantic structure  
-- **CSS3** – Clean, calming UI (soft colors, rounded corners)  
-- **JavaScript (Vanilla)** – Moodometer logic, journal saving with `localStorage`  
-- **Netlify** – For live hosting  
+## Getting Started
+Clone this repository and open the project in your browser:
+```bash
+git clone https://github.com/roboticengguseratvit/Cura_Website
+cd Cura_Website
